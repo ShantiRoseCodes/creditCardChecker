@@ -23,9 +23,7 @@ const mystery5 = [4, 9, 1, 3, 5, 4, 0, 4, 6, 3, 0, 7, 2, 5, 2, 3]
 const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, mystery1, mystery2, mystery3, mystery4, mystery5]
 
 
-// Add your functions below:
-
-// Add your functions below:
+// Checks if the credit card number is valid.
 const validateCred = (arr) => {
     let n = arr.length;
     let sum = 0;
@@ -61,6 +59,7 @@ const validateCred = (arr) => {
     }
    }
    
+   // Returns an array of invalid credit card numbers from a nested array.
    const findInvalidCards = (nestedArr) => {
      let invalid = [];
      for (let j = 0; j < nestedArr.length; j++){
@@ -73,6 +72,8 @@ const validateCred = (arr) => {
    
    let invalidCards = (findInvalidCards(batch));
    
+   // returns an array of credit card companies that corresponds to invalid card numbers from above function.
+   // credit card companies only appear once in the array
    const idInvalidCardCompanies = (invalidArr) => {
      let invalidCardCompanies = [];
      for (let k = 0; k < invalidArr.length; k++){
