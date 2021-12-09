@@ -25,7 +25,105 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 // Add your functions below:
 
-
+// Add your functions below:
+const validateCred = (arr) => {
+    let n = arr.length;
+    let sum = 0;
+    for (let i = 0; i < n; i++){
+      if (n % 2 === 0){
+        if (i % 2 === 0){
+          let double = arr[i] * 2;
+          if(double >= 10){
+            sum = sum + (double - 9);
+          } else {
+            sum = sum + double;
+          }
+        } else {
+          sum = sum + arr[i];
+        }
+      }  else {
+         if (i % 2 === 0){
+           sum = sum + arr[i];
+         } else {
+           let double = arr[i] * 2;
+           if (double >= 10){
+             sum = sum + (double - 9)
+           } else {
+             sum = sum + double;
+           }
+         }
+      }
+    }
+    if (sum % 10 === 0){
+      return true;
+    } else {
+      return false;
+    }
+   }
+   
+   const findInvalidCards = (nestedArr) => {
+     let invalid = [];
+     for (let j = 0; j < nestedArr.length; j++){
+       if (validateCred(nestedArr[j]) === false){
+         invalid.push(nestedArr[j]);
+       }
+     }
+     return invalid;
+   }
+   
+   let invalidCards = (findInvalidCards(batch));
+   
+   const idInvalidCardCompanies = (invalidArr) => {
+     let invalidCardCompanies = [];
+     for (let k = 0; k < invalidArr.length; k++){
+       if(invalidArr[k][0] === 3){
+         if(invalidCardCompanies.find(element => element === "Amex") === undefined){
+           invalidCardCompanies.push("Amex");
+         }
+       } else if(invalidArr[k][0] === 4){
+         if(invalidCardCompanies.find(element => element === "Visa") === undefined){
+           invalidCardCompanies.push("Visa");
+         }
+       } else if (invalidArr[k][0] === 5){
+         if(invalidCardCompanies.find(element => element === "Mastercard") === undefined){
+           invalidCardCompanies.push("Mastercard");
+         } 
+       } else if (invalidArr[k][0] === 6){
+         if(invalidCardCompanies.find(element => element === "Discover") === undefined){
+           invalidCardCompanies.push("Discover");
+         }
+       } else {
+         invalidCardCompanies.push("Company not found.");
+       }
+     }
+     return invalidCardCompanies;
+   }
+   
+   
+   
+   
+   
+   
+   // console.log(validateCred(valid1)); /*true*/
+   // console.log(validateCred(valid2)); /*true*/
+   // console.log(validateCred(valid3)); /*true*/
+   // console.log(validateCred(valid4)); /*true*/
+   // console.log(validateCred(valid5)); /*true*/
+   // console.log(validateCred(invalid1)); /*false*/
+   // console.log(validateCred(invalid2)); /*false*/
+   // console.log(validateCred(invalid3)); /*false*/
+   // console.log(validateCred(invalid4)); /*false*/
+   // console.log(validateCred(invalid5)); /*false*/
+   // console.log(validateCred(mystery1)); /*false*/
+   // console.log(validateCred(mystery2)); /*true*/
+   // console.log(validateCred(mystery3)); /*false*/
+   // console.log(validateCred(mystery4)); /*false*/
+   // console.log(validateCred(mystery5)); /*true*/
+   
+   // console.log(findInvalidCards(batch));
+   
+   // console.log(idInvalidCardCompanies(invalidCards)); /*['Visa', 'Mastercard', 'Amex', 'Discover'] */
+   
 
 
 
